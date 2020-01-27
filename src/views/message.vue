@@ -11,7 +11,7 @@
             <div id="comments">
                 <div id="respond-page-14" class="respond">
                     <div class="cancel-comment-reply">
-                        <a id="cancel-comment-reply-link" href="#" rel="nofollow" style="display: none;" onclick="return TypechoComment.cancelReply();">取消回复</a>          
+                        <a id="cancel-comment-reply-link" href="#" rel="nofollow" style="display: none;" >取消回复</a>          
                     </div>
                     <h4 id="response"><i class="layui-icon"></i> 评论啦~</h4>
                     <br>
@@ -58,8 +58,6 @@
                         </li>
                     </ol> 
                 </div>
-
-                
             </div>
         </div>
     </div>

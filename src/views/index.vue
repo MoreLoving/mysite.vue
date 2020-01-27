@@ -41,7 +41,7 @@ export default {
         })
         .then( res => {
             this.blog_list = res.data.results
-            console.log(this.blog_list)
+            // console.log(this.blog_list)
         }).catch( err => {
             console.log("index error")
             console.log(err)
