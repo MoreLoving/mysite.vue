@@ -36,7 +36,7 @@ export default {
     },
     mounted(){
         request({
-            url:"/api/blog_list/1/",
+            url:"/api/head_blog/",
             method:"get",
         })
         .then( res => {
