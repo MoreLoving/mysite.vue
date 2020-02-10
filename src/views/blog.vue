@@ -156,9 +156,13 @@ export default {
     ,
     activated(){
         this.getBlog(this.$route.params.id)
+        window.hljs.initHighlightingOnLoad()
+
     },
     mounted(){
         this.getBlog(this.$route.params.id)
+        window.hljs.initHighlightingOnLoad()
+
     }
     ,
     beforeRouteUpdate(to,from,next){
