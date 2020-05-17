@@ -65,7 +65,8 @@ export default {
     },
     activated(){
         var type = this.$route.params.type
-        this.get_blog(type,'')
+        var kw= this.$route.query.kw
+        this.get_blog(type, kw)
     },
     beforeRouteUpdate(to,from,next){
         var type = to.params.type
