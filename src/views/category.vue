@@ -4,7 +4,7 @@
             <div class="title-article list-card"  v-for="blog in blog_list" :key="blog.id" >
                 <div class="list-pic">
                     <router-link :to="{name:'blog',params:{id:blog.id}}"  :title="blog.title">
-                    <img :src="baseUrl+blog.image_url" alt="Typecho 标签云如何随机展示固定个数的标签？" class="img-full">
+                    <img :src="baseUrl+blog.image_url"  class="img-full">
                     </router-link>
                 </div><!--list-pic-->
                 <router-link :to="{name:'blog',params:{id:blog.id}}">
@@ -36,40 +36,41 @@ export default {
     data(){
         return{
             baseUrl:config.baseUrl,
-            type:"",
             blog_list:[],
             nothing:false,
         }
     },
+    methods:{
+        get_blog(type, kw){
+            request({
+                url:"/api/blog_list/"+type+"/",
+                method:"get",
+                params:{
+                    kw:kw,
+                }
+            }).then(res => {
+                this.blog_list = res.data.results
+                if(type == 'search'){
+                    this.bus.$emit("ChangeBreadcrumb",[kw+' 相关的文章'])
+                }else{
+                    this.bus.$emit("ChangeBreadcrumb",[type])
+                }
+                this.nothing = this.blog_list==0
+                // console.log(res)
+            }).catch(err => {
+                console.log("category error")
+                console.dir(err)
+            })
+        }
+    },
     activated(){
-        this.type = this.$route.params.type
-        request({
-            url:"/api/blog_list/"+this.type+"/",
-            method:"get",
-        }).then(res => {
-            this.blog_list = res.data.results
-            this.bus.$emit("ChangeBreadcrumb",[this.type])
-            this.nothing = this.blog_list==0
-            // console.log(res)
-        }).catch(err => {
-            console.log("category error")
-            console.dir(err)
-        })
+        var type = this.$route.params.type
+        this.get_blog(type,'')
     },
     beforeRouteUpdate(to,from,next){
-        this.type = to.params.type
-        request({
-            url:"/api/blog_list/"+this.type+"/",
-            method:"get",
-        }).then(res => {
-            this.blog_list = res.data.results
-            this.bus.$emit("ChangeBreadcrumb",[this.type])
-            this.nothing = this.blog_list==0
-            // console.log(res)
-        }).catch(err => {
-            console.log("category error")
-            console.dir(err)
-        })
+        var type = to.params.type
+        var kw = to.query.kw
+        this.get_blog(type, kw)
         next()
     }
 }

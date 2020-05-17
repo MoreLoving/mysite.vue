@@ -52,7 +52,7 @@
                                     </strong>
                                     <div><b></b></div>
                                     <div class="t-s"><p></p><p v-text="comment.content"></p><p></p></div>
-                                    <span class="t-btn"><a href="" rel="nofollow" onclick="return TypechoComment.reply('comment-535', 535);">回复</a> <span class="t-g" v-cloak>{{comment.time|dateTimeFormat}}</span></span> 
+                                    <span class="t-btn"> <span class="t-g" v-cloak>{{comment.time|dateTimeFormat}}</span></span> 
                                 </div><!-- 单条评论者信息及内容 -->
                             </div>
                         </li>
@@ -71,6 +71,7 @@ export default {
         return {
             comment_list:[],
             comment:{
+                'blog_id':0,
                 'name':'',
                 'content':'',
                 'website':'',
