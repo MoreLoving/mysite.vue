@@ -9,7 +9,8 @@
                 <span v-cloak><i class="layui-icon"></i> {{blog.comment_num}}条</span>
             </div>
         </div>
-        <div class="text" itemprop="articleBody" v-html="blog.content">
+        <div class="text" itemprop="articleBody">
+            <mavon-editor defaultOpen="preview" :editable="false" :toolbarsFlag="false" :value="blog.content" :subfield="false" />
         </div>
         <div class="tags-text">
             <i class="layui-icon"></i>标签: <a href="#" v-for="tag in blog.tags" :key="tag.id" v-text="tag.name+' '"></a>           
