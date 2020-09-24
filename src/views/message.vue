@@ -45,7 +45,7 @@
                         <li  class="comment-body comment-parent comment-odd" v-for="comment in comment_list" :key="comment.pk">
                             <div  class="pl-dan comment-txt-box">
                                 <div class="t-p comment-author">
-                                    <img class="avatar" src="static/img/commenter.jpeg" alt="wyzblog" width="40" height="40">        </div>
+                                    <img class="avatar" :src="imageBaseUrl+'/static/img/commenter.jpeg'" alt="wyzblog" width="40" height="40">        </div>
                                 <div class="t-u comment-author">
                                     <strong>
                                         <a :href="comment.website" rel="external nofollow" v-text="comment.name"></a>                <span class="layui-badge"></span>
@@ -65,6 +65,7 @@
 
 <script>
 import {request} from '../network/index'
+import config from '../network/config'
 export default {
     name: "message",
     data(){
@@ -76,7 +77,8 @@ export default {
                 'content':'',
                 'website':'',
                 'email':'',
-            }
+            },
+            imageBaseUrl:config.imageBaseUrl,
         }
     },
     mounted(){

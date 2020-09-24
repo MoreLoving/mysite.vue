@@ -108,7 +108,7 @@
                                         <!-- 每一条回复 -->
                                         <div class="pl-dan comment-txt-box" v-for="reply in comment_.replys" :key="reply.pk">
                                             <div class="t-p comment-author">
-                                                <img class="avatar" src="static/img/commenter.jpeg" alt="zbxm" width="40" height="40">        
+                                                <img class="avatar" :src="imageBaseUrl+'/static/img/commenter.jpeg'" alt="zbxm" width="40" height="40">        
                                             </div>
                                             <div class="t-u comment-author">
                                                 <strong>
@@ -160,6 +160,7 @@
 
 <script>
 import {request} from "../network/index"
+import config from "../network/config"
 export default {
     name: "blog",
     data(){
@@ -177,6 +178,7 @@ export default {
                 'email':'',
                 'website':'',
             },
+            imageBaseUrl:config.imageBaseUrl,
         }
     },
     methods:{

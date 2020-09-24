@@ -2,7 +2,7 @@
     <div class="dynamic">
         <div class="about-life">
             <div class="t-w">
-                <div class="t-u"><img height="120" src="static/img/logo.png"></div>
+                <div class="t-u"><img height="120" :src="imageBaseUrl+'/static/img/logo.png'"></div>
                 <div class="t-t">
                     <h1>Joker<span><i class="layui-icon"></i>苦逼码农一枚</span></h1>
                     <!-- <div class="t-d layui-hide-sm">
@@ -27,7 +27,7 @@
             <ol class="comment-list">
                 <ol class="comment-list">
                     <div id="comment-comment-312" class="t-list comment-parent comment-odd comment-by-author" v-for="dynamic in dynamic_list" :key="dynamic.pk">
-                        <div class="t-p"><img class="avatar" src="static/img/touxiang.jpg" alt="Joker" width="40" height="40"></div>
+                        <div class="t-p"><img class="avatar" :src="imageBaseUrl+'/static/img/touxiang.jpg'" alt="Joker" width="40" height="40"></div>
                         <div class="t-r">
                             <strong><router-link to="index" rel="external nofollow">Joker</router-link></strong>
                             <p></p><p v-text="dynamic.content"></p><p></p>
@@ -42,10 +42,12 @@
 </template>
 <script>
 import {request} from '../network/index'
+import config from '../network/config'
 export default {
     name: "dynamic",
     data(){
         return{
+            imageBaseUrl:config.imageBaseUrl,
             dynamic_list:[],
         }
     },
