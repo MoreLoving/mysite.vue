@@ -3,7 +3,7 @@
     <div class="title-article list-card" v-for="blog in blog_list" :key="blog.id" >
         <div class="list-pic">
             <router-link :to="{name:'blog',params:{id:blog.id}}"  :title="blog.title">
-            <img :src="baseUrl+blog.image_url" class="img-full">
+            <img :src="imageBaseUrl+blog.image_url" class="img-full">
             </router-link>
         </div><!--list-pic-->
         <router-link :to="{name:'blog',params:{id:blog.id}}">
@@ -31,6 +31,7 @@ export default {
     data(){
         return {
             baseUrl:config.baseUrl,
+            imageBaseUrl:config.imageBaseUrl,
             blog_list:[],
         }
     },
